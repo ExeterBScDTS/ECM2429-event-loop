@@ -1,8 +1,8 @@
-"""_summary_
+"""An example of an event-driven program.
 """
 
 def print_help() -> None:
-    """_summary_
+    """Print a help message.
     """
     print("Enter one of the following commands:")
     print("\thelp\tdisplays this message")
@@ -24,11 +24,18 @@ def print_unknown(command: str) -> None:
 
 
 def do_dir() -> None:
-    print()
+    """Print a listing of the current directory.
+    """
+    import os
+    for name in os.listdir():
+        print(name)
 
 
 def do_pwd() -> None:
-    print()
+    """Print the path to the current directory.
+    """
+    import os
+    print(os.getcwd())
 
 
 def mainloop():

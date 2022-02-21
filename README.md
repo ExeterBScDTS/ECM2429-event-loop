@@ -6,13 +6,15 @@ Event-loop programming examples.
 
 An event loop is an endlessly repeating loop that receives *events* and then dispatches them for appropriate processing depending on the details of the event.
 
+Programs that use an event-loop are called event-driven programs.
+
 ### A simple interactive program
 
 We can write our own event-loop in Python using a ```while``` loop and an ```input()``` statement to read commands typed by the user and perform different actions depending on the command given.
 
 This example uses a ```while``` loop and an ``if elif`` block.  The condition ```True``` means loop repeats forever, or until a ```break``` statement is reached.
 
-See ```code/example-1/interactive.py``` for the full program.  Here is the event-loop.
+See [code/example-1/interactive.py](code/example-1/interactive.py) for the full program.  Here is the event-loop.
 
 ```py
 while True:
@@ -188,6 +190,8 @@ Asynchronous programming avoids some of the technical issues that arise when usi
 <https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop>
 
 <https://en.wikipedia.org/wiki/Event_loop>
+
+<https://en.wikipedia.org/wiki/Event-driven_architecture>
 
 <https://python-textbok.readthedocs.io/en/1.0/Introduction_to_GUI_Programming.html>
 
