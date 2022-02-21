@@ -56,17 +56,19 @@ def mainloop(stdscr):
             else:
                 curses.beep()
         elif key == ord('r'):
-            # Resart the countdown if it is already running
+            # Restart the countdown if it is already running
             if deadline:
                 deadline = start_countdown(countdown_seconds)
             else:
                 curses.beep()
         elif key == ord('c'):
+            # Cancel the countdown
             if deadline:
                 deadline = None
             else:
                 curses.beep()
         elif key == ord('x'):
+            # Exit.  Only available if the countdown has completed.
             if not deadline:
                 break
             curses.beep()

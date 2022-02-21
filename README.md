@@ -80,19 +80,15 @@ if __name__ == "__main__":
     root.mainloop()
 ```
 
-When using an even-loop we defined the appearance and behaviour of our GUI, and then hand over to the event-loop to run our program.
-
-### A simple web server
-
-Web servers are another example of event processing for which the event-loop model is an appropriate implementation.
+When using an event-loop we defined the appearance and behaviour of our GUI, and then hand over to the event-loop to run our program.
 
 ## Pros and cons of the event-loop pattern
 
 The event-loop pattern is widely used for a huge variety of software systems.
 
-* REPL - read-execute-print loop, is a common style of interactive program.  The user types a line of text, and the program executes the commands.  REPL programs include the Python shell (when you run Python without a file or arguments) and the DOS terminal,
+* REPL - read-evaluate-print loop, is a common style of interactive program.  The user types a line of text, and the program executes the commands.  REPL programs include the Python shell (when you run Python without a file or arguments) and the DOS terminal.
 
-* GUIs - all GUI frameworks use an event-loop.
+* GUIs - all modern user-interface frameworks use an event-loop.
 
 * Web and mobile application - the event-loop is at the heart of the JavaScript language used to write web applications.
 
@@ -120,7 +116,7 @@ create the appearance of concurrency through what is termed *asynchronous* progr
 Our simple tkinter example has two buttons, one for "Start" and another for "Stop".  At the moment these don't do anything except print messages.  So let's add some code so that "Start" will start a countdown - 10, 9, 8.. 3, 2, 1, Go",
 and "Stop" will stop the countdown.
 
-See [code/example-4/tkinter-countdown.py](code/example-2/tkinter-countdown.py)
+See [code/example-4/tkinter-countdown.py](code/example-4/tkinter-countdown.py)
 
 ```txt
 10
@@ -159,7 +155,7 @@ def start(self):
         print("Go!")
 ```
 
-To actually stop the countdown will require some changes to the logic of the program. See [code/example-4/tkinter-countdown-stop.py](code/example-2/tkinter-countdown-stop.py) for appropriate changes.
+To actually stop the countdown will require some changes to the logic of the program. See [code/example-4/tkinter-countdown-stop.py](code/example-4/tkinter-countdown-stop.py) for appropriate changes.
 
 **Is this a good solution?**
 
@@ -170,6 +166,10 @@ There are other potential problems. The countdown timer sleeps for 1 second betw
 #### A better implementation
 
 Although not obvious, the most significant flaw in the program at present is the use of ```time.sleep()```.  If we could avoid using this our program could respond to button clicks immediately. Of course if we just remove the sleep() call, the countdown would be too fast.  What we need is something that achieves the same outcome, a delay, but allows the UI to check frequently for user input.
+
+### A simple web server
+
+Web servers are another example of event processing for which the event-loop model is an appropriate implementation.
 
 ### An asynchronous terminal user interface
 
