@@ -37,11 +37,13 @@ while True:
 
 ## Why use an event-loop?
 
-The event-loop style simplifies the design and implementation of many kinds of software.  Most productivity software such as word processors use this style, but it is also used internally in computer operating systems and network communication software to process all types of events and messages.
+The event-loop style simplifies the design and implementation of many kinds of software.  Most productivity software such as word processors use this style, but it is also used internally in computer operating systems and network communication software to process events and messages.
 
 ### A simple tkinter GUI
 
 This example of a graphical user interface uses the tkinter library.  You would be forgiven for not immediately spotting the event-loop here.  It's the very last line of the program ```root.mainloop()```.  Once this method runs the only other code that will run are the methods called by ```mainloop()```.  We tell the event-loop what these events are using the ```command``` argument to the ```Button``` contructor.  That is, each of our ```Button``` objects in the user interface has an event-handler associated with it.
+
+See [code/example-4/tkinter-demo.py](code/example-2/tkinter-demo.py)
 
 ```py
 from tkinter import Tk, Button
@@ -118,6 +120,8 @@ create the appearance of concurrency through what is termed *asynchronous* progr
 Our simple tkinter example has two buttons, one for "Start" and another for "Stop".  At the moment these don't do anything except print messages.  So let's add some code so that "Start" will start a countdown - 10, 9, 8.. 3, 2, 1, Go",
 and "Stop" will stop the countdown.
 
+See [code/example-4/tkinter-countdown.py](code/example-2/tkinter-countdown.py)
+
 ```txt
 10
 9
@@ -155,7 +159,7 @@ def start(self):
         print("Go!")
 ```
 
-To actually stop the countdown will require some changes to the logic of the program. See ```tkinter-countdown-stop.py``` for appropriate changes.
+To actually stop the countdown will require some changes to the logic of the program. See [code/example-4/tkinter-countdown-stop.py](code/example-2/tkinter-countdown-stop.py) for appropriate changes.
 
 **Is this a good solution?**
 
@@ -170,6 +174,14 @@ Although not obvious, the most significant flaw in the program at present is the
 ### An asynchronous terminal user interface
 
 There are situations where we don't need a full graphical user interface, but still require an asynchronous interface.  For example to pause and restart a long running program, or periodically check for new messages.  The built-in Python ```input()``` function **blocks**, that is it causes our program to wait until the user has typed some text before our program can continue.  If we don't want this behaviour then there are changes we can make to our program.  In this example I'll use the Python curses library, which as well as providing a non-blocking means of reading the keyboard also provide other useful features such as positioning text and coloured text and backgrounds.
+
+See [code/example-5/curses-countdown.py](code/example-5/curses-countdown.py).
+
+To run this example on Windows requires the **windows-curses** module.
+
+```sh
+pip install windows-curses
+```
 
 For more information on the features of curses see <https://docs.python.org/3/howto/curses.html>
 

@@ -7,9 +7,8 @@
 from tkinter import Tk, Button
 from time import sleep
 
+
 class SimpleGUI:
-    """_summary_
-    """
     def __init__(self, root: Tk):
         """Constructor for a simple tkinter GUI
         :param root: The root tk application
@@ -28,7 +27,7 @@ class SimpleGUI:
         """The start action.  Performed when the start button is pressed.
         """
         self.stop_countdown = False
-        for i in range(10,0,-1):
+        for i in range(10, 0, -1):
             print(i)
             self.__root.update()
             if self.stop_countdown:
@@ -44,6 +43,7 @@ class SimpleGUI:
         """
         print("Stopping...")
         self.stop_countdown = True
+
 
 if __name__ == "__main__":
     root = Tk()
