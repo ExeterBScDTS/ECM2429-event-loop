@@ -12,7 +12,7 @@ Programs that use an event-loop are called event-driven programs.
 
 We can write our own event-loop in Python using a ```while``` loop and an ```input()``` statement to read commands typed by the user and perform different actions depending on the command given.
 
-This example uses a ```while``` loop and an ``if elif`` block.  The condition ```True``` means loop repeats forever, or until a ```break``` statement is reached.
+This example uses a ```while``` loop and an ``if elif`` block.  The condition ```True``` means the loop repeats forever, or until a ```break``` statement is reached.
 
 See [code/example-1/interactive.py](code/example-1/interactive.py) for the full program.  Here is the event-loop.
 
@@ -49,8 +49,6 @@ See [code/example-4/tkinter-demo.py](code/example-2/tkinter-demo.py)
 from tkinter import Tk, Button
 
 class SimpleGUI:
-    """_summary_
-    """
     def __init__(self, root: Tk):
         """Constructor for a simple tkinter GUI
         :param root: The root tk application
