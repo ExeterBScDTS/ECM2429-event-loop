@@ -100,7 +100,7 @@ Users are able to quickly discover the features of a program, especially if a GU
 
 ### Disadvantages
 
-Not imposing a strict sequence of activities on the user now means there is no obvious flow.  It's not always clear to the user what they can, or should, do next.  I'm sure you've all experienced this when learning to use a new application. Worse still, without careful design it is likely that users will attempt to perform actions in the wrong order and cause a program to crash.
+Not imposing a strict sequence of activities on the user now means there is no obvious flow.  It is not always clear to the user what they can, or should, do next.  I'm sure you've all experienced this when learning to use a new application. Worse still, without careful design it is likely that users will attempt to perform actions in the wrong order and cause a program to crash.
 
 
 ### Is this "multi-tasking"?
@@ -113,7 +113,7 @@ create the appearance of concurrency through what is termed *asynchronous* progr
 
 ### An asynchronous tkinter UI
 
-Our simple tkinter example has two buttons, one for "Start" and another for "Stop".  At the moment these don't do anything except print messages.  So let's add some code so that "Start" will start a countdown - 10, 9, 8.. 3, 2, 1, Go",
+Our simple tkinter example has two buttons, one for "Start" and another for "Stop".  At the moment these don't do anything except print messages.  So let us add some code so that "Start" will start a countdown - 10, 9, 8.. 3, 2, 1, Go",
 and "Stop" will stop the countdown.
 
 See [code/example-4/tkinter-countdown.py](code/example-4/tkinter-countdown.py)
@@ -136,7 +136,7 @@ Stopping...
 Stopping...
 ```
 
-What we find is that although our GUI seemed to work fine with simple actions associated with the buttons, once we have a long running action we see that the GUI is waiting for each action to complete before starting the next.  We can also see that button clicks are being queued, so when it is able to process the stop button presses, there are several waiting.
+What we find is that although our GUI seems to work fine with simple actions associated with the buttons, once we have a long running action we see that the GUI is waiting for each action to complete before starting the next.  We can also see that button clicks are being queued, so when it is able to process the stop button presses, there are several waiting.
 
 #### How can we fix this?
 
@@ -159,17 +159,13 @@ To actually stop the countdown will require some changes to the logic of the pro
 
 **Is this a good solution?**
 
-It seems to work, but there are still problems.  If the start button is pressed again during the countdown, a new countdown begins - this probably isn't desireable behaviour. Similarly we can stop without first starting. A common solution to this issue is to disable the buttons when their use is not allowed.  In this way out GUI becomes "modal", i.e. it has different modes.
+It seems to work, but there are still problems.  If the start button is pressed again during the countdown, a new countdown begins - this probably isn't desireable behaviour. Similarly, we can stop without first starting. A common solution to this issue is to disable the buttons when their use is not allowed.  In this way our GUI becomes "modal", i.e. it has different modes.
 
 There are other potential problems. The countdown timer sleeps for 1 second between counts, and so our event-loop updates only occur each second.  This is probably usable, but if the intervals were longer, say 60 seconds, then the delay would be unacceptable.  And we now have update() calls scattered throughout our program, which might be acceptable for a small program, but would be very difficult to test and maintain if done in a large program. 
 
 #### A better implementation
 
 Although not obvious, the most significant flaw in the program at present is the use of ```time.sleep()```.  If we could avoid using this our program could respond to button clicks immediately. Of course if we just remove the sleep() call, the countdown would be too fast.  What we need is something that achieves the same outcome, a delay, but allows the UI to check frequently for user input.
-
-### A simple web server
-
-Web servers are another example of event processing for which the event-loop model is an appropriate implementation.
 
 ### An asynchronous terminal user interface
 
