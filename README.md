@@ -138,7 +138,7 @@ What we find is that although our GUI seems to work fine with simple actions ass
 
 #### How can we fix this?
 
-Before we attempt to fix our program, we should first think about why it is behaving as it is.  The program is not broken, it is doing exactly what the Python instructions tell it to do.  Our program is *single threaded*, which means it can only do one thing at a time.  At the heart of our program is the event-loop which decides which processes events in order, but requires each event to complete before starting the next.  
+Before we attempt to fix our program, we should first think about why it is behaving as it is.  The program is not broken, it is doing exactly what the Python instructions tell it to do.  Our program is *single threaded*, which means it can only do one thing at a time.  At the heart of our program is the event-loop which determines the order in which events are processed, but requires each event to complete before starting the next.  
 
 However we can, if we wish, temporarily return control to the event-loop, to allow it to check for any new event, and handle that event.  The change required is very simple.
 
